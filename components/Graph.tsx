@@ -5,7 +5,6 @@ import { register } from "@antv/x6-react-shape";
 import MultiAINode, { PortOption } from "./MultiAINode";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import TextNode from "./TextNode";
-import BlockNode from "./BlockNode";
 import Oracle from "./orancle";
 
 ////
@@ -58,10 +57,10 @@ const GraphComponent: React.FC = () => {
       newNode?.setData({ parentId: node.id });
 
       const bottomPortId = node.getPorts().find((port) => port.group === "bottom")?.id;
-      const topPortId = newNode.getPorts().find((port) => port.group === "top")?.id;
+      const topPortId = newNode?.getPorts().find((port) => port.group === "top")?.id;
 
       if (bottomPortId && topPortId) {
-        graphRef.current.addEdge({
+        graphRef.current?.addEdge({
           source: { cell: node.id, port: bottomPortId },
           target: { cell: newNode.id, port: topPortId },
           connector: {
@@ -132,11 +131,11 @@ const GraphComponent: React.FC = () => {
   
       // Find the bottom port of the parent node and top port of the new node
       const bottomPortId = node.getPorts().find((port) => port.group === "bottom")?.id;
-      const topPortId = newNode.getPorts().find((port) => port.group === "top")?.id;
+      const topPortId = newNode?.getPorts().find((port) => port.group === "top")?.id;
   
       // If both ports exist, create an edge between the nodes
       if (bottomPortId && topPortId) {
-        graphRef.current.addEdge({
+        graphRef.current?.addEdge({
           source: { cell: node.id, port: bottomPortId },
           target: { cell: newNode.id, port: topPortId },
           connector: {
