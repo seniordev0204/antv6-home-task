@@ -54,13 +54,6 @@ const TextNode: React.FC<TextNodeProps> = ({ node, heading }) => {
   const [size, setSize] = useState({ width: 100, height: 50 });
   const [nodeOptions, setNodeOptions] =
     useState<PortOption[]>(DEFAULT_NODE_OPTIONS);
-  const [isNodeOptionsOpen, setIsNodeOptionsOpen] = useState(false);
-  const [bgColor, setBgColor] = useState("#c9ced6");
-  const [textColor, setTextColor] = useState("#000000");
-  const [isEditSheetOpen, setIsEditSheetOpen] = useState(false);
-  const [showCommandMenu, setShowCommandMenu] = useState(false);
-  const [cursorPosition, setCursorPosition] = useState(0);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   // Update node size when resizing
   useEffect(() => {
@@ -68,7 +61,7 @@ const TextNode: React.FC<TextNodeProps> = ({ node, heading }) => {
       node.resize(size.width, size.height);      
     }
   }, [size, node]);
-  
+
   return (
     <>
       <div

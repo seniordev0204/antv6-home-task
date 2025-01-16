@@ -33,7 +33,7 @@ const GraphComponent: React.FC = () => {
     // Calculate the starting X position for the child nodes to be centered
     let startX = parentX + (parentWidth - totalChildrenWidth) / 2;
   
-    let baseY = parentY + 100; // Vertical offset for spacing child nodes
+    let baseY = parentY + 200; // Vertical offset for spacing child nodes
 
     options.filter(option => option.enabled).map((option, index) => {
       let x = startX + index * (100 + offset); // 200px width for each child node plus the offset
@@ -71,7 +71,7 @@ const GraphComponent: React.FC = () => {
           },
           attrs: {
             line: {
-              stroke: "#5F95FF",
+              // stroke: "#5F95FF",
               strokeWidth: 2,
             },
           },
@@ -102,7 +102,7 @@ const GraphComponent: React.FC = () => {
     // Calculate the starting X position for the child nodes to be centered
     let startX = parentX + (parentWidth - totalChildrenWidth) / 2;
   
-    let baseY = parentY + 100; // Vertical offset for spacing child nodes
+    let baseY = parentY + 200; // Vertical offset for spacing child nodes
   
     // Define an offset value for horizontal spacing
      // Add an offset of 50px between child nodes
@@ -148,7 +148,7 @@ const GraphComponent: React.FC = () => {
           },
           attrs: {
             line: {
-              stroke: "#5F95FF",
+              // stroke: "#5F95FF",
               strokeWidth: 2,
             },
           },
@@ -201,7 +201,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
+                fill: "yellow",
                 strokeWidth: 1,
               },
             },
@@ -225,7 +225,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
+                fill: "yellow",
                 strokeWidth: 2,
               },
             },
@@ -249,32 +249,14 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
-                strokeWidth: 2,
-              },
-              plus: {
-                d: "M -4 0 L 4 0 M 0 -4 L 0 4",
-                stroke: "#2d8cf0",
-                strokeWidth: 2,
-              },
-              line: {
-                stroke: "#2d8cf0",
-                strokeWidth: 2,
-                targetMarker: null,
+                fill: "yellow",
+                strokeWidth: 1,
               },
             },
             markup: [
               {
-                tagName: "path",
-                selector: "line",
-              },
-              {
                 tagName: "circle",
                 selector: "circle",
-              },
-              {
-                tagName: "path",
-                selector: "plus",
               },
             ],
           },
@@ -291,7 +273,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
+                fill: "yellow",
                 strokeWidth: 2,
                 cursor: "pointer",
               },
@@ -324,7 +306,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
+                fill: "yellow",
                 strokeWidth: 1,
               },
             },
@@ -348,7 +330,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
+                fill: "yellow",
                 strokeWidth: 2,
               },
             },
@@ -372,32 +354,14 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
-                strokeWidth: 2,
-              },
-              plus: {
-                d: "M -4 0 L 4 0 M 0 -4 L 0 4",
-                stroke: "#2d8cf0",
-                strokeWidth: 2,
-              },
-              line: {
-                stroke: "#2d8cf0",
-                strokeWidth: 2,
-                targetMarker: null,
+                fill: "yellow",
+                strokeWidth: 1,
               },
             },
             markup: [
               {
-                tagName: "path",
-                selector: "line",
-              },
-              {
                 tagName: "circle",
                 selector: "circle",
-              },
-              {
-                tagName: "path",
-                selector: "plus",
               },
             ],
           },
@@ -414,7 +378,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
+                fill: "yellow",
                 strokeWidth: 2,
                 cursor: "pointer",
               },
@@ -435,7 +399,6 @@ const GraphComponent: React.FC = () => {
       width: 200,
       height: 50,
       component: ({ node }) => {
-        const data = node.getData();
         return <TextNode node={node} heading="Text 1" />
       },
       ports: {
@@ -450,49 +413,11 @@ const GraphComponent: React.FC = () => {
             },
             attrs: {
               circle: {
-                r: 0,
-                magnet: true,
-                stroke: "none",
-                fill: "none",
-              },
-              ".plus-icon": {
-                d: "M 0 -6 L 0 6 M -6 0 L 6 0",
-                stroke: "#2d8cf0",
-                strokeWidth: 2,
-                fill: "none",
-              },
-              ".plus-background": {
-                r: 10,
-                fill: "#fff",
-                stroke: "#2d8cf0",
-                strokeWidth: 1,
-              },
-            },
-            markup: [
-              {
-                tagName: "circle",
-                selector: ".plus-background",
-              },
-              {
-                tagName: "path",
-                selector: ".plus-icon",
-              },
-            ],
-          },
-          bottom: {
-            position: "bottom",
-            attrs: {
-              circle: {
-                r: 10,
+                r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
+                fill: "yellow",
                 strokeWidth: 1,
-              },
-              path: {
-                d: "M -4 0 L 4 0 M 0 -4 L 0 4",
-                stroke: "#2d8cf0",
-                strokeWidth: 2,
               },
             },
             markup: [
@@ -500,9 +425,23 @@ const GraphComponent: React.FC = () => {
                 tagName: "circle",
                 selector: "circle",
               },
+            ],
+          },
+          bottom: {
+            position: "bottom",
+            attrs: {
+              circle: {
+                r: 6,
+                magnet: true,
+                stroke: "#2d8cf0",
+                fill: "yellow",
+                strokeWidth: 1,
+              },
+            },
+            markup: [
               {
-                tagName: "path",
-                selector: "path",
+                tagName: "circle",
+                selector: "circle",
               },
             ],
           },
@@ -513,7 +452,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
+                fill: "yellow",
                 strokeWidth: 1,
               },
             },
@@ -531,7 +470,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
+                fill: "yellow",
                 strokeWidth: 1,
               },
             },
@@ -566,49 +505,11 @@ const GraphComponent: React.FC = () => {
             },
             attrs: {
               circle: {
-                r: 0,
-                magnet: true,
-                stroke: "none",
-                fill: "none",
-              },
-              ".plus-icon": {
-                d: "M 0 -6 L 0 6 M -6 0 L 6 0",
-                stroke: "#2d8cf0",
-                strokeWidth: 2,
-                fill: "none",
-              },
-              ".plus-background": {
-                r: 10,
-                fill: "#fff",
-                stroke: "#2d8cf0",
-                strokeWidth: 1,
-              },
-            },
-            markup: [
-              {
-                tagName: "circle",
-                selector: ".plus-background",
-              },
-              {
-                tagName: "path",
-                selector: ".plus-icon",
-              },
-            ],
-          },
-          bottom: {
-            position: "bottom",
-            attrs: {
-              circle: {
-                r: 10,
+                r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
+                fill: "yellow",
                 strokeWidth: 1,
-              },
-              path: {
-                d: "M -4 0 L 4 0 M 0 -4 L 0 4",
-                stroke: "#2d8cf0",
-                strokeWidth: 2,
               },
             },
             markup: [
@@ -616,9 +517,23 @@ const GraphComponent: React.FC = () => {
                 tagName: "circle",
                 selector: "circle",
               },
+            ],
+          },
+          bottom: {
+            position: "bottom",
+            attrs: {
+              circle: {
+                r: 6,
+                magnet: true,
+                stroke: "#2d8cf0",
+                fill: "yellow",
+                strokeWidth: 1,
+              },
+            },
+            markup: [
               {
-                tagName: "path",
-                selector: "path",
+                tagName: "circle",
+                selector: "circle",
               },
             ],
           },
@@ -629,7 +544,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
+                fill: "yellow",
                 strokeWidth: 1,
               },
             },
@@ -647,7 +562,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
+                fill: "yellow",
                 strokeWidth: 1,
               },
             },
@@ -682,49 +597,11 @@ const GraphComponent: React.FC = () => {
             },
             attrs: {
               circle: {
-                r: 0,
-                magnet: true,
-                stroke: "none",
-                fill: "none",
-              },
-              ".plus-icon": {
-                d: "M 0 -6 L 0 6 M -6 0 L 6 0",
-                stroke: "#2d8cf0",
-                strokeWidth: 2,
-                fill: "none",
-              },
-              ".plus-background": {
-                r: 10,
-                fill: "#fff",
-                stroke: "#2d8cf0",
-                strokeWidth: 1,
-              },
-            },
-            markup: [
-              {
-                tagName: "circle",
-                selector: ".plus-background",
-              },
-              {
-                tagName: "path",
-                selector: ".plus-icon",
-              },
-            ],
-          },
-          bottom: {
-            position: "bottom",
-            attrs: {
-              circle: {
-                r: 10,
+                r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
+                fill: "yellow",
                 strokeWidth: 1,
-              },
-              path: {
-                d: "M -4 0 L 4 0 M 0 -4 L 0 4",
-                stroke: "#2d8cf0",
-                strokeWidth: 2,
               },
             },
             markup: [
@@ -732,9 +609,23 @@ const GraphComponent: React.FC = () => {
                 tagName: "circle",
                 selector: "circle",
               },
+            ],
+          },
+          bottom: {
+            position: "bottom",
+            attrs: {
+              circle: {
+                r: 6,
+                magnet: true,
+                stroke: "#2d8cf0",
+                fill: "yellow",
+                strokeWidth: 1,
+              },
+            },
+            markup: [
               {
-                tagName: "path",
-                selector: "path",
+                tagName: "circle",
+                selector: "circle",
               },
             ],
           },
@@ -745,7 +636,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
+                fill: "yellow",
                 strokeWidth: 1,
               },
             },
@@ -763,7 +654,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "#fff",
+                fill: "yellow",
                 strokeWidth: 1,
               },
             },
@@ -809,19 +700,12 @@ const GraphComponent: React.FC = () => {
       background: { color: "#f8f9fa" },
 
       connecting: {
-        // router: {
-        //   name: "",
-        //   args: {
-        //     padding: 20,
-        //     startDirections: ["right"],
-        //     endDirections: ["left"],
-        //   },
-        // },
         connector: {
           name: "smooth",
           args: {
             radius: 50,
           },
+          
         },
         anchor: "center",
         connectionPoint: {
@@ -838,14 +722,12 @@ const GraphComponent: React.FC = () => {
             targetMagnet.getAttribute("magnet") === "true"
           );
         },
-
-        // snap: { radius: 20 },
-        // allowBlank: false,
-        // allowLoop: false,
-        // allowNode: false,
-        // allowEdge: false,
-        // allowMulti: true,
-        // highlight: true,
+        allowBlank: false,
+        allowLoop: false,
+        allowNode: false,
+        allowEdge: false,
+        allowMulti: true,
+        highlight: true,
       },
 
       interacting: {
@@ -865,6 +747,8 @@ const GraphComponent: React.FC = () => {
         },
       },
     });
+    
+    
 
     graph.on("node:change:position", ({ node, options }) => {
       if (options.skipParentHandler) return;
@@ -946,7 +830,6 @@ const GraphComponent: React.FC = () => {
           break;
       }
       graphRef.current.addNode(nodeConfig);
-      console.log(graphRef.current.getNodes()[0].prop());
     }
   };
 
@@ -995,18 +878,8 @@ const GraphComponent: React.FC = () => {
 
       {/* Right Canvas Area */}
       <div className="flex-1 h-screen relative">
-        {/* Layout Toggle Button */}
-        <button
-          onClick={handleLayoutToggle}
-          className="absolute top-4 right-4 z-10 bg-white p-2 rounded-md shadow-md hover:bg-gray-50"
-          title={
-            isVertical
-              ? "Switch to Horizontal Layout"
-              : "Switch to Vertical Layout"
-          }
-        >
-          {isVertical ? <ArrowRight /> : <ArrowDown />}
-        </button>
+        
+        
 
         <div
           ref={containerRef}

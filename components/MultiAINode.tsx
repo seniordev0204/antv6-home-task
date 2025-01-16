@@ -12,9 +12,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 //
@@ -74,7 +71,6 @@ const MultiAINode: React.FC<MultiAINodeProps> = ({
   const [bgColor, setBgColor] = useState("#1e3a5f");
   const [textColor, setTextColor] = useState("#ffffff");
   const [isEditSheetOpen, setIsEditSheetOpen] = useState(false);
-  const [orientation, setOrientation] = useState(isVertical);
   const [heading, setHeading] = useState("Multi-AI Model");
 
 
