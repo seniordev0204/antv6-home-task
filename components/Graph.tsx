@@ -6,6 +6,7 @@ import MultiAINode, { PortOption } from "./MultiAINode";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import TextNode from "./TextNode";
 import Oracle from "./orancle";
+import { smooth } from "@antv/x6/lib/registry/connector/smooth";
 
 ////
 const GraphComponent: React.FC = () => {
@@ -66,7 +67,9 @@ const GraphComponent: React.FC = () => {
           connector: {
             name: 'smooth',
             args: {
-              radius: -20,
+              direction: 'V',
+              radius: 120,
+              smooth: true
             },
           },
           attrs: {
@@ -143,7 +146,9 @@ const GraphComponent: React.FC = () => {
           connector: {
             name: 'smooth',
             args: {
-              radius: -20,
+              direction: 'V',
+              radius: 120,
+              smooth: true
             },
           },
           attrs: {
@@ -201,7 +206,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -225,7 +230,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 2,
               },
             },
@@ -249,7 +254,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -273,7 +278,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 2,
                 cursor: "pointer",
               },
@@ -306,7 +311,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -330,7 +335,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 2,
               },
             },
@@ -354,7 +359,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -378,7 +383,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 2,
                 cursor: "pointer",
               },
@@ -416,7 +421,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -434,7 +439,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -452,7 +457,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -470,7 +475,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -508,7 +513,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -526,7 +531,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -544,7 +549,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -562,7 +567,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -600,7 +605,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -618,7 +623,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -636,7 +641,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -654,7 +659,7 @@ const GraphComponent: React.FC = () => {
                 r: 6,
                 magnet: true,
                 stroke: "#2d8cf0",
-                fill: "yellow",
+                fill: "white",
                 strokeWidth: 1,
               },
             },
@@ -701,11 +706,12 @@ const GraphComponent: React.FC = () => {
 
       connecting: {
         connector: {
-          name: "smooth",
+          name: 'smooth',
           args: {
-            radius: 50,
+            // direction: 'H',
+            radius: -20,
+            smooth: true
           },
-          
         },
         anchor: "center",
         connectionPoint: {
@@ -748,7 +754,46 @@ const GraphComponent: React.FC = () => {
       },
     });
     
-    
+    graph.on('edge:connected', ({ edge, isNew }) => {
+      if (isNew) {
+        const sourceNode = edge.getSourceNode();
+        const targetNode = edge.getTargetNode();
+        
+        if (sourceNode && targetNode) {
+          const sourceShape = sourceNode.shape;
+          const targetShape = targetNode.shape;
+          
+          // Configure edge based on node types
+          if (sourceShape === 'text-1' || targetShape === 'text-1') {
+            edge.setConnector({
+              name: 'smooth',
+              args: {
+                direction: 'H',
+                radius: 120,
+                smooth: true
+              }
+            });
+          } else if (sourceShape === 'text-2' || targetShape === 'text-2') {
+            edge.setConnector({
+              name: 'smooth',
+              args: {
+                direction: 'V',
+                radius: 120,
+                smooth: true
+              }
+            });
+            // edge.setRouter({
+            //   name: 'er',
+            //   args: {
+            //     direction: 'V',
+            //     offset: 'center',
+            //     min: 50
+            //   }
+            // });
+          }
+        }
+      }
+    });
 
     graph.on("node:change:position", ({ node, options }) => {
       if (options.skipParentHandler) return;
