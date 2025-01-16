@@ -6,6 +6,7 @@ import MultiAINode, { PortOption } from "./MultiAINode";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import TextNode from "./TextNode";
 import Oracle from "./orancle";
+import Chatbot from "./chatbot";
 
 ////
 const GraphComponent: React.FC = () => {
@@ -879,7 +880,7 @@ const GraphComponent: React.FC = () => {
       {/* Right Canvas Area */}
       <div className="flex-1 h-screen relative">
         
-        
+      <Chatbot />
 
         <div
           ref={containerRef}
