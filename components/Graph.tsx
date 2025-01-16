@@ -54,7 +54,7 @@ const GraphComponent: React.FC = () => {
       ];
 
       const newNode = graphRef.current?.addNode(nodeConfig);
-      newNode?.setData({ parentId: node.id });
+      newNode?.setData({ parentId: node.id, heading: option.label });
 
       const bottomPortId = node.getPorts().find((port) => port.group === "bottom")?.id;
       const topPortId = newNode?.getPorts().find((port) => port.group === "top")?.id;
@@ -64,8 +64,10 @@ const GraphComponent: React.FC = () => {
           source: { cell: node.id, port: bottomPortId },
           target: { cell: newNode.id, port: topPortId },
           connector: {
-            name: 'rounded',
-            args: { radius: 40 },
+            name: 'smooth',
+            args: {
+              radius: -20,
+            },
           },
           attrs: {
             line: {
@@ -95,7 +97,7 @@ const GraphComponent: React.FC = () => {
 
     const offset = 200;
     let parentWidth = node.getBBox().width; // Width of the parent node
-    let totalChildrenWidth = options.filter(option => option.enabled).length * 200 + 50 * (options.filter(option => option.enabled).length - 1); // Each child is 200px wide
+    let totalChildrenWidth = options.filter(option => option.enabled).length * 200 + offset * (options.filter(option => option.enabled).length - 1); // Each child is 200px wide
   
     // Calculate the starting X position for the child nodes to be centered
     let startX = parentX + (parentWidth - totalChildrenWidth) / 2;
@@ -132,15 +134,17 @@ const GraphComponent: React.FC = () => {
       // Find the bottom port of the parent node and top port of the new node
       const bottomPortId = node.getPorts().find((port) => port.group === "bottom")?.id;
       const topPortId = newNode?.getPorts().find((port) => port.group === "top")?.id;
-  
+      
       // If both ports exist, create an edge between the nodes
       if (bottomPortId && topPortId) {
         graphRef.current?.addEdge({
           source: { cell: node.id, port: bottomPortId },
           target: { cell: newNode.id, port: topPortId },
           connector: {
-            name: 'rounded',
-            args: { radius: 40 },
+            name: 'smooth',
+            args: {
+              radius: -20,
+            },
           },
           attrs: {
             line: {
@@ -430,7 +434,10 @@ const GraphComponent: React.FC = () => {
       shape: "text-1",
       width: 200,
       height: 50,
-      component: TextNode,
+      component: ({ node }) => {
+        const data = node.getData();
+        return <TextNode node={node} heading="Text 1" />
+      },
       ports: {
         groups: {
           top: {
@@ -543,7 +550,10 @@ const GraphComponent: React.FC = () => {
       shape: "text-2",
       width: 200,
       height: 50,
-      component: TextNode,
+      component: ({ node }) => {
+        const data = node.getData();
+        return <TextNode node={node} heading="Text 2" />
+      },
       ports: {
         groups: {
           top: {
@@ -656,7 +666,10 @@ const GraphComponent: React.FC = () => {
       shape: "text-3",
       width: 200,
       height: 50,
-      component: TextNode,
+      component: ({ node }) => {
+        const data = node.getData();
+        return <TextNode node={node} heading={data?.heading} />
+      },
       ports: {
         groups: {
           top: {
@@ -796,18 +809,18 @@ const GraphComponent: React.FC = () => {
       background: { color: "#f8f9fa" },
 
       connecting: {
-        router: {
-          name: "orth",
-          args: {
-            padding: 20,
-            startDirections: ["right"],
-            endDirections: ["left"],
-          },
-        },
+        // router: {
+        //   name: "",
+        //   args: {
+        //     padding: 20,
+        //     startDirections: ["right"],
+        //     endDirections: ["left"],
+        //   },
+        // },
         connector: {
           name: "smooth",
           args: {
-            // radius: 50,
+            radius: 50,
           },
         },
         anchor: "center",
@@ -826,13 +839,13 @@ const GraphComponent: React.FC = () => {
           );
         },
 
-        snap: { radius: 20 },
-        allowBlank: false,
-        allowLoop: false,
-        allowNode: false,
-        allowEdge: false,
-        allowMulti: true,
-        highlight: true,
+        // snap: { radius: 20 },
+        // allowBlank: false,
+        // allowLoop: false,
+        // allowNode: false,
+        // allowEdge: false,
+        // allowMulti: true,
+        // highlight: true,
       },
 
       interacting: {

@@ -34,6 +34,7 @@ import {
 
 export interface TextNodeProps {
   node?: any;
+  heading?: string;
 }
 
 export interface PortOption {
@@ -48,8 +49,7 @@ const DEFAULT_NODE_OPTIONS: PortOption[] = [
   { id: "delete", label: "Delete", enabled: false },
 ];
 
-const TextNode: React.FC<TextNodeProps> = ({ node }) => {
-  const [text, setText] = useState("");
+const TextNode: React.FC<TextNodeProps> = ({ node, heading }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [size, setSize] = useState({ width: 100, height: 50 });
   const [nodeOptions, setNodeOptions] =
@@ -57,7 +57,6 @@ const TextNode: React.FC<TextNodeProps> = ({ node }) => {
   const [isNodeOptionsOpen, setIsNodeOptionsOpen] = useState(false);
   const [bgColor, setBgColor] = useState("#c9ced6");
   const [textColor, setTextColor] = useState("#000000");
-  const [heading, setHeading] = useState("Text Container");
   const [isEditSheetOpen, setIsEditSheetOpen] = useState(false);
   const [showCommandMenu, setShowCommandMenu] = useState(false);
   const [cursorPosition, setCursorPosition] = useState(0);
@@ -66,31 +65,24 @@ const TextNode: React.FC<TextNodeProps> = ({ node }) => {
   // Update node size when resizing
   useEffect(() => {
     if (node) {
-      node.resize(size.width, size.height);
+      node.resize(size.width, size.height);      
     }
   }, [size, node]);
-
+  
   return (
     <>
       <div
-        className="relative bg-white border border-gray-300 rounded-md shadow-md overflow-visible"
+        className="relative bg-white border border-gray-300 rounded-md shadow-md overflow-visible bg-[#1e3a5f] text-white flex justify-center items-center"
         style={{
           backgroundColor: '#1e3a5f',
           minWidth: "100px",
           minHeight: "50px",
+          color: 'white'
         }}
       >
+        {heading}
       </div>
-      <EditSheet
-        isOpen={isEditSheetOpen}
-        onOpenChange={setIsEditSheetOpen}
-        backgroundColor={bgColor}
-        textColor={textColor}
-        heading={heading}
-        onBackgroundColorChange={setBgColor}
-        onTextColorChange={setTextColor}
-        onHeadingChange={setHeading}
-      />{" "}
+      
     </>
   );
 };
