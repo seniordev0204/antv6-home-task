@@ -1,83 +1,57 @@
-import React, { useEffect, useRef, useState } from "react";
-import {
-  Bot,
-  MoreHorizontal,
-  Image as ImageIcon,
-  AlignLeft,
-  AlignCenter,
-  AlignRight,
-  List,
-  ListOrdered,
-} from "lucide-react";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-
-import { ChromePicker } from "react-color";
-import { EditSheet } from "./EditSheet";
-import {
-  Command,
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-} from "@/components/ui/command";
+import React, { Component } from "react";
 
 export interface TextNodeProps {
   node?: any;
   heading?: string;
 }
 
-export interface PortOption {
-  id: string;
-  label: string;
-  enabled: boolean;
+export interface TextNodeState {
+  size: { width: number; height: number };
 }
 
-const DEFAULT_NODE_OPTIONS: PortOption[] = [
-  { id: "colors", label: "Colors", enabled: false },
-  { id: "edit", label: "Edit", enabled: false },
-  { id: "delete", label: "Delete", enabled: false },
-];
+class TextNode extends Component<TextNodeProps, TextNodeState> {
+  constructor(props: TextNodeProps) {
+    super(props);
+    this.state = {
+      size: { width: 100, height: 50 },
+    };
+  }
 
-const TextNode: React.FC<TextNodeProps> = ({ node, heading }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [size, setSize] = useState({ width: 100, height: 50 });
-  const [nodeOptions, setNodeOptions] =
-    useState<PortOption[]>(DEFAULT_NODE_OPTIONS);
+  componentDidUpdate(prevProps: TextNodeProps, prevState: TextNodeState) {
+    const { node } = this.props;
+    const { size } = this.state;
 
-  // Update node size when resizing
-  useEffect(() => {
-    if (node) {
-      node.resize(size.width, size.height);      
+    if (node && size !== prevState.size) {
+      node.resize(size.width, size.height);
     }
-  }, [size, node]);
+  }
 
-  return (
-    <>
+  componentDidMount(): void {
+    const { node } = this.props;
+    const { size } = this.state;
+
+    if (node) {
+      node.resize(size.width, size.height);
+    }
+  }
+
+  render() {
+    const { heading } = this.props;
+
+    return (
       <div
         className="relative bg-white border border-gray-300 rounded-md shadow-md overflow-visible bg-[#1e3a5f] text-white flex justify-center items-center"
         style={{
-          backgroundColor: '#1e3a5f',
+          backgroundColor: "#1e3a5f",
           minWidth: "100px",
           minHeight: "50px",
-          color: 'white'
+          color: "white",
         }}
       >
         {heading}
       </div>
-      
-    </>
-  );
-};
+    );
+  }
+}
 
 export default TextNode;
